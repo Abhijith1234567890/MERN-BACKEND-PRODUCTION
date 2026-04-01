@@ -1,58 +1,53 @@
-const User = require("../models/User")
-const bcrypt = require("bcryptjs")
-const generateToken = require("../utils/generateToken")
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+const generateToken = require("../utils/generateToken");
+const AppError = require("../utils/AppError");
 
 // REGISTER
-exports.register = async (req, res) => {
-  const {name, email, password} = req.body
+exports.register = async (req, res, next) => {
+  const { name, email, password } = req.body;
 
-  try {
-    const userExists = await User.findOne({email})
-    if (userExists) {
-      return res.status(400).json({message: "User already exists"})
-    }
-
-    const user = await User.create({
-      name,
-      email,
-      password
-    })
-
-    res.status(201).json({
-      message: "User registered",
-      user
-    })
-  } catch (error) {
-    res.status(500).json({message: error.message})
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    return next(new AppError("Email already registered", 400));
   }
-}
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+  });
+
+  res.status(201).json({
+    status: "success",
+    message: "User registered",
+    user,
+  });
+};
 
 // LOGIN
-exports.login = async (req, res) => {
-  const {email, password} = req.body
+exports.login = async (req, res, next) => {
+  const { email, password } = req.body;
 
-  try {
-    const user = await User.findOne({email})
+  const user = await User.findOne({ email });
 
-    if (user && (await bcrypt.compare(password, user.password))) {
-      const token = generateToken(user._id)
-
-      return res.json({
-        message: "Login successful",
-        token
-      })
-    } else {
-      return res.status(401).json({message: "Invalid credentials"})
-    }
-  } catch (error) {
-    res.status(500).json({message: error.message})
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return next(new AppError("Invalid email or password", 401));
   }
-}
+
+  const token = generateToken(user._id);
+
+  return res.json({
+    message: "Login successful",
+    token,
+  });
+};
 
 // PROTECTED ROUTE
 exports.getTasks = (req, res) => {
   res.json({
-    message: "Protected tasks data",
-    userId: req.user
-  })
-}
+    status: "success",
+    message: "Protected data",
+    userId: req.user,
+  });
+};
