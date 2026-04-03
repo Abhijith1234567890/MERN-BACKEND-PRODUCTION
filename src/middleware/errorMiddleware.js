@@ -1,6 +1,16 @@
+const logger = require("../utils/logger");
+
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
+
+  // Log error
+  logger.error({
+    message: err.message,
+    status: err.statusCode,
+    url: req.originalUrl,
+    method: req.method,
+  });
 
   res.status(err.statusCode).json({
     status: err.status,
