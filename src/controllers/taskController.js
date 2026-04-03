@@ -37,7 +37,7 @@ exports.getTasks = async (req, res, next) => {
 
   // SEARCH
   if (search) {
-    query.title = { $regex: search, $option: "i" };
+    query.title = { $regex: search, $options: "i" };
   }
 
   const skip = (page - 1) * limit;

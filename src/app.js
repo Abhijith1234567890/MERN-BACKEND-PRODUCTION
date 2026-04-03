@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-// app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
 
 // Handle unknown routes
