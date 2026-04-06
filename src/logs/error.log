@@ -1,1 +1,6 @@
 {"level":"error","message":"Route /api/unknown not found","method":"GET","status":404,"timestamp":"2026-04-03T16:19:45.625Z","url":"/api/unknown"}
+{"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:34:59.018Z","url":"/api/auth/login"}
+{"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:34:59.704Z","url":"/api/auth/login"}
+{"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:35:00.741Z","url":"/api/auth/login"}
+{"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:35:01.283Z","url":"/api/auth/login"}
+{"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:35:01.748Z","url":"/api/auth/login"}
