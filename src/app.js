@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
+const helmet = require("helmet");
 
 const AppError = require("./utils/AppError");
 const errorMiddleware = require("./middleware/errorMiddleware");
@@ -16,16 +17,21 @@ if (!fs.existsSync(logDir)) {
 }
 
 // Morgan stream (write to file)
-const accessLogStream = fs.createWriteStream(path.join(logDir, "combined.log"), {
-  flags: "a",
-});
+const accessLogStream = fs.createWriteStream(
+  path.join(logDir, "combined.log"),
+  {
+    flags: "a",
+  },
+);
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
+app.use(helmet());
+
 // Log all requests
-app.use(morgan("combined", {stream: accessLogStream}))
+app.use(morgan("combined", { stream: accessLogStream }));
 
 // Routes
 app.use("/api/auth", require("./routes/authRoutes"));
