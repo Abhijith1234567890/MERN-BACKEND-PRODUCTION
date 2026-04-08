@@ -4,3 +4,13 @@
 {"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:35:00.741Z","url":"/api/auth/login"}
 {"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:35:01.283Z","url":"/api/auth/login"}
 {"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-06T06:35:01.748Z","url":"/api/auth/login"}
+{"level":"error","message":"Password must be atleast 6 characters","method":"POST","status":400,"timestamp":"2026-04-08T15:11:40.005Z","url":"/api/auth/register"}
+{"level":"error","message":"Email already registered","method":"POST","status":400,"timestamp":"2026-04-08T15:12:20.287Z","url":"/api/auth/register"}
+{"level":"error","message":"Email already registered","method":"POST","status":400,"timestamp":"2026-04-08T15:13:07.024Z","url":"/api/auth/register"}
+{"level":"error","message":"Invalid email or password","method":"POST","status":401,"timestamp":"2026-04-08T15:13:53.749Z","url":"/api/auth/login"}
+{"level":"error","message":"Invalid email or password","method":"POST","status":401,"timestamp":"2026-04-08T15:14:04.420Z","url":"/api/auth/login"}
+{"level":"error","message":"Invalid token","method":"GET","status":401,"timestamp":"2026-04-08T15:14:30.086Z","url":"/api/tasks"}
+{"level":"error","message":"Valid email is required","method":"POST","status":400,"timestamp":"2026-04-08T15:18:26.611Z","url":"/api/auth/login"}
+{"level":"error","message":"Unexpected token '\"', \"\"{\\r\\n  \\\"\"... is not valid JSON","method":"POST","status":400,"timestamp":"2026-04-08T15:19:09.395Z","url":"/api/auth/register"}
+{"level":"error","message":"Invalid token","method":"POST","status":401,"timestamp":"2026-04-08T15:19:40.784Z","url":"/api/tasks"}
+{"level":"error","message":"Invalid token","method":"GET","status":401,"timestamp":"2026-04-08T15:19:53.597Z","url":"/api/tasks"}
