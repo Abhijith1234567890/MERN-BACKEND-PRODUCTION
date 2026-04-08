@@ -41,7 +41,6 @@ app.use("/api/tasks", require("./routes/taskRoutes"));
 // Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-
 // Handle unknown routes
 app.use((req, res, next) => {
   next(new AppError(`Route ${req.originalUrl} not found`, 404));
