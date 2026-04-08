@@ -22,9 +22,8 @@ const {
   loginValidation,
 } = require("../validators/authValidator");
 
-// Apply limiter
-router.post("/register", authLimiter, registerValidation, validate, register);
-router.post("/login",authLimiter, loginValidation, validate, login);
+router.post("/register",registerValidation, validate, register);
+router.post("/login",loginValidation, validate, login);
 
 // Protected route
 router.get("/tasks", authMiddleware, getTasks);

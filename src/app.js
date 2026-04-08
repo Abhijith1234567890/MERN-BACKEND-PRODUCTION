@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
 const helmet = require("helmet");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./docs/swagger");
 
 const AppError = require("./utils/AppError");
 const errorMiddleware = require("./middleware/errorMiddleware");
@@ -36,6 +38,9 @@ app.use(morgan("combined", { stream: accessLogStream }));
 // Routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/tasks", require("./routes/taskRoutes"));
+// Swagger route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 // Handle unknown routes
 app.use((req, res, next) => {
